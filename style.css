@@ -1,0 +1,340 @@
+/* Import Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Poppins:wght@300;400;500;600&display=swap');
+
+/* General Body Styles */
+body {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    /* Mengubah background-color menjadi linear-gradient untuk tampilan yang lebih menarik dan kalem */
+    background: linear-gradient(to bottom right, #E0FBFC, #CFE8F1); /* Gradasi dari biru sangat muda ke biru keabu-abuan muda */
+    color: #0D1B2A; /* Dark navy for text */
+    line-height: 1.7;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    scroll-behavior: smooth;
+}
+
+/* Header Styles */
+header {
+    background-color: #0D1B2A; /* Darker navy */
+    color: #E0FBFC; /* Light text */
+    padding: 2em 1em;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative; /* Needed for z-index if header overlaps nav */
+    z-index: 2; /* Ensure header is above other content */
+}
+
+.logo-container {
+    margin-bottom: 1em;
+}
+
+.logo {
+    max-width: 180px; /* Larger logo */
+    height: auto;
+    border-radius: 50%; /* Optional: make logo round if it fits */
+    box-shadow: 0 0 15px rgba(255,255,255,0.1); /* Subtle glow for logo */
+}
+
+header h1 {
+    font-family: 'Montserrat', sans-serif;
+    margin: 0;
+    font-size: 3.2em; /* Larger main title */
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+header p {
+    font-size: 1.3em;
+    margin-top: 0.8em;
+    font-style: italic;
+    color: #A9D1D5; /* Slightly muted color for slogan */
+}
+
+/* Navigation Bar Styles */
+#navbar {
+    background-color: #1B263B; /* Slightly lighter navy for nav */
+    padding: 1em 0;
+    position: sticky; /* Makes navigation stick to top */
+    top: 0;
+    width: 100%;
+    z-index: 1000; /* Ensures it stays on top of other content */
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+
+.nav-links {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+}
+
+.nav-links li {
+    margin: 0 1.5em;
+}
+
+.nav-links a {
+    color: #E0FBFC;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 1.1em;
+    padding: 0.5em 1em;
+    transition: all 0.3s ease;
+    border-radius: 5px;
+}
+
+.nav-links a:hover,
+.nav-links a.active { /* Add active class for current section */
+    background-color: #415A77; /* Medium blue on hover/active */
+    color: #FFFFFF;
+    transform: translateY(-2px); /* Slight lift effect */
+}
+
+/* Main Content Area */
+main {
+    flex-grow: 1;
+    max-width: 1000px; /* Wider content area */
+    margin: 2em auto;
+    padding: 0 2em;
+}
+
+/* Section Common Styles */
+section {
+    background-color: #FFFFFF;
+    padding: 3.5em;
+    border-radius: 12px; /* More rounded corners */
+    box-shadow: 0 8px 20px rgba(0,0,0,0.1); /* Deeper shadow */
+    margin-bottom: 3em; /* More spacing between sections */
+    text-align: center;
+    position: relative; /* For animation positioning */
+    overflow: hidden; /* Hide overflow during animation */
+}
+
+section h2 {
+    font-family: 'Montserrat', sans-serif;
+    color: #0D1B2A;
+    font-size: 2.5em;
+    margin-bottom: 1.2em;
+    text-align: center;
+}
+
+section p {
+    font-size: 1.05em;
+    margin-bottom: 1em;
+    line-height: 1.8;
+    text-align: justify; /* Justify text for paragraphs */
+}
+
+/* Hero Section Specific */
+.hero {
+    background: linear-gradient(135deg, #415A77, #778DA9); /* Gradient background */
+    color: #FFFFFF;
+    text-align: center;
+    padding: 4em;
+}
+
+.hero h2 {
+    color: #FFFFFF;
+    font-size: 3em;
+}
+
+.hero p {
+    color: #E0FBFC;
+    max-width: 800px;
+    margin: 1.5em auto 2em auto;
+    font-size: 1.2em;
+    text-align: center; /* Center align hero paragraph */
+}
+
+/* About Us Section Specific */
+.about-us {
+    background-color: #F8FBFD; /* Slightly different background */
+    border: 1px solid #cce7e6;
+}
+
+.about-us p {
+    text-align: justify;
+}
+
+/* Motivation Section Specific */
+.motivation {
+    background-color: #FFFFFF;
+}
+
+/* Call to Action Section Specific */
+.call-to-action {
+    background: linear-gradient(135deg, #1B263B, #0D1B2A); /* Dark gradient */
+    color: #E0FBFC;
+    padding: 4em;
+    text-align: center;
+}
+
+.call-to-action h2 {
+    color: #E0FBFC;
+    font-size: 2.8em;
+}
+
+.call-to-action p {
+    color: #A9D1D5;
+    max-width: 700px;
+    margin: 1.5em auto 2em auto;
+    font-size: 1.15em;
+}
+
+/* Call to Action Buttons */
+.cta-button, .cta-button-secondary {
+    display: inline-block;
+    padding: 1.2em 3em;
+    text-decoration: none;
+    border-radius: 50px; /* Pill-shaped button */
+    font-weight: 700;
+    font-size: 1.1em;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.cta-button {
+    background-color: #3f51b5; /* Primary blue */
+    color: #ffffff;
+    box-shadow: 0 4px 15px rgba(63, 81, 181, 0.4);
+}
+
+.cta-button:hover {
+    background-color: #283593; /* Darker blue on hover */
+    transform: translateY(-3px); /* Lift effect */
+    box-shadow: 0 8px 20px rgba(63, 81, 181, 0.6);
+}
+
+.cta-button-secondary {
+    background-color: #778DA9; /* Greyish blue */
+    color: #0D1B2A; /* Dark text on light button */
+    box-shadow: 0 4px 15px rgba(119, 141, 169, 0.4);
+}
+
+.cta-button-secondary:hover {
+    background-color: #415A77; /* Medium blue on hover */
+    color: #FFFFFF; /* White text on hover */
+    transform: translateY(-3px); /* Lift effect */
+    box-shadow: 0 8px 20px rgba(119, 141, 169, 0.6);
+}
+
+
+/* Footer Styles */
+footer {
+    background-color: #0D1B2A; /* Darker navy */
+    color: #A9D1D5;
+    text-align: center;
+    padding: 2em 1em;
+    margin-top: auto;
+    box-shadow: 0 -4px 8px rgba(0,0,0,0.2);
+    font-size: 0.95em;
+}
+
+footer p {
+    margin: 0.5em 0;
+}
+
+/* --- Animation Styles --- */
+/* Initial state for elements that will animate */
+.animate-on-scroll {
+    opacity: 0;
+    transform: translateY(50px);
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+/* State when element is visible and animated */
+.animate-on-scroll.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Specific fade-in for header */
+.animate-fade-in {
+    opacity: 0;
+    animation: fadeIn 1.5s ease-out forwards;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+/* Media Queries for Responsiveness */
+@media (max-width: 768px) {
+    header h1 {
+        font-size: 2.2em;
+    }
+
+    header p {
+        font-size: 1em;
+    }
+
+    .logo {
+        max-width: 120px;
+    }
+
+    .nav-links {
+        flex-direction: column;
+    }
+
+    .nav-links li {
+        margin: 0.5em 0;
+    }
+
+    section {
+        padding: 2em;
+        margin-bottom: 2em;
+    }
+
+    section h2 {
+        font-size: 1.8em;
+    }
+
+    .hero h2 {
+        font-size: 2.2em;
+    }
+
+    .hero p {
+        font-size: 1em;
+    }
+
+    .call-to-action h2 {
+        font-size: 2em;
+    }
+
+    .cta-button, .cta-button-secondary {
+        padding: 0.8em 2em;
+        font-size: 1em;
+    }
+}
+
+@media (max-width: 480px) {
+    header {
+        padding: 1.5em 0.5em;
+    }
+    header h1 {
+        font-size: 1.8em;
+    }
+    header p {
+        font-size: 0.9em;
+    }
+    .logo {
+        max-width: 100px;
+    }
+    main {
+        padding: 0 1em;
+    }
+    section {
+        padding: 1.5em;
+    }
+    .nav-links {
+        padding: 0.5em 0;
+    }
+}
