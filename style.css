@@ -1,70 +1,151 @@
-/* Import Google Fonts */
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Poppins:wght@300;400;500;600&display=swap');
+/* --- Google Fonts --- */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=Poppins:wght@300;400;500;600;700&display=swap');
 
-/* General Body Styles */
+/* --- CSS Variables (Refined Color Palette & Shadows) --- */
+:root {
+    /* Navy Shades */
+    --color-navy-darkest: #0A1428; /* Deepest Navy, almost black */
+    --color-navy-dark: #1A2E44;    /* Rich Navy, for backgrounds */
+    --color-navy-medium: #2A4866;  /* Mid-range Navy, for cards/accents */
+    --color-navy-light: #4B6E8F;   /* Lighter Navy, for secondary elements */
+
+    /* Accent Colors */
+    --color-accent-gold: #FFD700; /* Elegant Gold accent */
+    --color-accent-blue-bright: #00A6FB; /* A brighter, energetic blue if needed */
+
+    /* Text Colors */
+    --color-text-white: #F0F4F8;   /* Off-white for readability on dark */
+    --color-text-light: #D0D7E0;   /* Light grey-blue for secondary text */
+    --color-text-dark: #2c3e50;    /* Dark grey for light backgrounds */
+
+    /* Backgrounds */
+    --color-bg-main: #E9F3F7;      /* Very light, airy background */
+    --color-bg-light-card: #F8FBFD; /* Near-white for contrasting cards */
+
+    /* Shadows for Depth */
+    --shadow-subtle: 0 4px 15px rgba(0, 0, 0, 0.08);
+    --shadow-medium: 0 10px 30px rgba(0, 0, 0, 0.12);
+    --shadow-elevated: 0 15px 45px rgba(0, 0, 0, 0.18);
+
+    /* Spacing */
+    --spacing-xs: 0.5em;
+    --spacing-sm: 1em;
+    --spacing-md: 2em;
+    --spacing-lg: 3em;
+    --spacing-xl: 5em;
+}
+
+/* --- Base Styles --- */
+html {
+    scroll-behavior: smooth; /* Smooth scrolling for anchor links */
+}
+
 body {
     font-family: 'Poppins', sans-serif;
     margin: 0;
     padding: 0;
-    /* Mengubah background-color menjadi linear-gradient untuk tampilan yang lebih menarik dan kalem */
-    background: linear-gradient(to bottom right, #E0FBFC, #CFE8F1); /* Gradasi dari biru sangat muda ke biru keabu-abuan muda */
-    color: #0D1B2A; /* Dark navy for text */
+    background-color: var(--color-bg-main); /* Main airy background */
+    color: var(--color-text-dark);
     line-height: 1.7;
     display: flex;
     flex-direction: column;
     min-height: 100vh;
-    scroll-behavior: smooth;
+    overflow-x: hidden; /* Prevent horizontal scroll from animations */
 }
 
-/* Header Styles */
-header {
-    background-color: #0D1B2A; /* Darker navy */
-    color: #E0FBFC; /* Light text */
-    padding: 2em 1em;
+/* --- Global Headings & Paragraphs --- */
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Montserrat', sans-serif;
+    color: var(--color-navy-darkest);
+    font-weight: 700;
+    line-height: 1.2;
+    margin-top: 0;
+}
+
+h2 {
+    font-size: 3em;
+    margin-bottom: 1.5em;
+    position: relative;
+    padding-bottom: var(--spacing-sm);
     text-align: center;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
+h2::after { /* Stylish underline effect for H2 */
+    content: '';
+    display: block;
+    width: 80px;
+    height: 4px;
+    background: linear-gradient(to right, var(--color-accent-gold), var(--color-navy-light)); /* Gold gradient underline */
+    margin: var(--spacing-sm) auto 0;
+    border-radius: 2px;
+}
+
+p {
+    font-size: 1.05em;
+    margin-bottom: var(--spacing-sm);
+    line-height: 1.8;
+    color: var(--color-text-dark);
+}
+
+/* --- Header Styles --- */
+header {
+    background-color: var(--color-navy-darkest);
+    color: var(--color-text-white);
+    padding: var(--spacing-xl) var(--spacing-sm); /* More generous padding */
+    text-align: center;
+    box-shadow: var(--shadow-elevated); /* Stronger shadow for header */
     display: flex;
     flex-direction: column;
     align-items: center;
-    position: relative; /* Needed for z-index if header overlaps nav */
-    z-index: 2; /* Ensure header is above other content */
+    position: relative;
+    z-index: 2;
 }
 
 .logo-container {
-    margin-bottom: 1em;
+    margin-bottom: var(--spacing-md);
 }
 
 .logo {
-    max-width: 180px; /* Larger logo */
+    max-width: 220px; /* Even larger logo */
     height: auto;
-    border-radius: 50%; /* Optional: make logo round if it fits */
-    box-shadow: 0 0 15px rgba(255,255,255,0.1); /* Subtle glow for logo */
+    border-radius: 50%; /* Perfect circle */
+    box-shadow: 0 0 25px rgba(255,255,255,0.2); /* Enhanced glow */
+    transition: transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1); /* Smooth bouncy transform */
+}
+.logo:hover {
+    transform: scale(1.08); /* More noticeable hover */
 }
 
 header h1 {
-    font-family: 'Montserrat', sans-serif;
-    margin: 0;
-    font-size: 3.2em; /* Larger main title */
-    letter-spacing: 2px;
+    font-size: 4.5em; /* Massive main title */
+    letter-spacing: 4px;
     text-transform: uppercase;
+    font-weight: 900; /* Extra, extra bold */
+    text-shadow: 3px 3px 8px rgba(0,0,0,0.4); /* Stronger text shadow */
+    background: linear-gradient(to right, var(--color-text-white), var(--color-accent-gold)); /* Gradient text */
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent; /* Makes text fill with gradient */
 }
 
 header p {
-    font-size: 1.3em;
-    margin-top: 0.8em;
+    font-size: 1.6em; /* Larger, elegant slogan */
+    margin-top: var(--spacing-sm);
     font-style: italic;
-    color: #A9D1D5; /* Slightly muted color for slogan */
+    color: var(--color-text-light);
+    font-weight: 500;
+    max-width: 800px;
 }
 
-/* Navigation Bar Styles */
+/* --- Navigation Bar Styles --- */
 #navbar {
-    background-color: #1B263B; /* Slightly lighter navy for nav */
-    padding: 1em 0;
-    position: sticky; /* Makes navigation stick to top */
+    background-color: var(--color-navy-dark);
+    padding: var(--spacing-sm) 0;
+    position: sticky;
     top: 0;
     width: 100%;
-    z-index: 1000; /* Ensures it stays on top of other content */
-    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    z-index: 1000;
+    box-shadow: var(--shadow-medium);
+    border-bottom: 2px solid var(--color-navy-medium); /* Subtle bottom border */
 }
 
 .nav-links {
@@ -73,192 +154,363 @@ header p {
     padding: 0;
     display: flex;
     justify-content: center;
+    flex-wrap: wrap;
 }
 
 .nav-links li {
-    margin: 0 1.5em;
+    margin: 0 var(--spacing-md);
 }
 
 .nav-links a {
-    color: #E0FBFC;
+    color: var(--color-text-white);
     text-decoration: none;
     font-weight: 600;
     font-size: 1.1em;
-    padding: 0.5em 1em;
+    padding: var(--spacing-xs) var(--spacing-sm);
     transition: all 0.3s ease;
-    border-radius: 5px;
+    border-radius: 6px;
+    position: relative; /* For active indicator */
 }
 
-.nav-links a:hover,
-.nav-links a.active { /* Add active class for current section */
-    background-color: #415A77; /* Medium blue on hover/active */
-    color: #FFFFFF;
-    transform: translateY(-2px); /* Slight lift effect */
+.nav-links a:hover {
+    background-color: var(--color-navy-medium);
+    color: var(--color-accent-gold); /* Gold on hover */
+    transform: translateY(-2px);
 }
 
-/* Main Content Area */
+.nav-links a.active {
+    background-color: var(--color-navy-medium);
+    color: var(--color-accent-gold); /* Gold when active */
+    font-weight: 700;
+    box-shadow: var(--shadow-subtle);
+}
+
+/* --- Main Content Area --- */
 main {
     flex-grow: 1;
-    max-width: 1000px; /* Wider content area */
-    margin: 2em auto;
-    padding: 0 2em;
+    max-width: 1200px; /* Even wider content */
+    margin: var(--spacing-xl) auto; /* More vertical spacing */
+    padding: 0 var(--spacing-lg); /* More padding */
+    position: relative; /* For section separators */
 }
 
-/* Section Common Styles */
+/* --- Section Common Styles --- */
 section {
-    background-color: #FFFFFF;
-    padding: 3.5em;
-    border-radius: 12px; /* More rounded corners */
-    box-shadow: 0 8px 20px rgba(0,0,0,0.1); /* Deeper shadow */
-    margin-bottom: 3em; /* More spacing between sections */
+    background-color: var(--color-bg-light-card); /* Lighter background for card effect */
+    padding: var(--spacing-xl); /* Generous padding */
+    border-radius: 20px; /* More rounded corners */
+    box-shadow: var(--shadow-elevated); /* Pronounced shadow for elevation */
+    margin-bottom: var(--spacing-xl); /* More spacing between sections */
     text-align: center;
-    position: relative; /* For animation positioning */
-    overflow: hidden; /* Hide overflow during animation */
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.6s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.6s cubic-bezier(0.2, 0.8, 0.2, 1);
 }
 
-section h2 {
-    font-family: 'Montserrat', sans-serif;
-    color: #0D1B2A;
-    font-size: 2.5em;
-    margin-bottom: 1.2em;
-    text-align: center;
-}
+/* --- Section Separators (Unique UI/UX) --- */
+/* Add a subtle diagonal cut between sections (HTML structure needed for this, if using pseudo-elements directly on section) */
+/* For simplicity with current HTML, we'll use strong shadows and background color changes */
 
-section p {
-    font-size: 1.05em;
-    margin-bottom: 1em;
-    line-height: 1.8;
-    text-align: justify; /* Justify text for paragraphs */
-}
-
-/* Hero Section Specific */
+/* --- Hero Section Specific --- */
 .hero {
-    background: linear-gradient(135deg, #415A77, #778DA9); /* Gradient background */
-    color: #FFFFFF;
+    background: linear-gradient(135deg, var(--color-navy-medium), var(--color-navy-light));
+    color: var(--color-text-white);
     text-align: center;
-    padding: 4em;
+    padding: 6em; /* Very large padding */
+    border-radius: 25px; /* More rounded */
+    box-shadow: var(--shadow-elevated);
 }
 
 .hero h2 {
-    color: #FFFFFF;
-    font-size: 3em;
+    color: var(--color-text-white);
+    font-size: 4em; /* Huge hero heading */
+    line-height: 1.1;
+    text-shadow: 2px 2px 6px rgba(0,0,0,0.3);
+}
+.hero h2::after { /* Remove underline for hero heading */
+    display: none;
 }
 
 .hero p {
-    color: #E0FBFC;
-    max-width: 800px;
-    margin: 1.5em auto 2em auto;
-    font-size: 1.2em;
-    text-align: center; /* Center align hero paragraph */
+    color: var(--color-text-light);
+    max-width: 900px;
+    margin: var(--spacing-md) auto var(--spacing-lg) auto;
+    font-size: 1.4em; /* Larger, inviting paragraph */
+    font-weight: 300;
+    text-align: center;
 }
 
-/* About Us Section Specific */
+/* --- About Us Section Specific --- */
 .about-us {
-    background-color: #F8FBFD; /* Slightly different background */
-    border: 1px solid #cce7e6;
+    background-color: var(--color-bg-light-card);
+    padding: var(--spacing-xl) var(--spacing-lg);
 }
 
-.about-us p {
+.about-us .content-wrapper {
+    display: flex;
+    gap: var(--spacing-lg);
+    align-items: center;
+    flex-wrap: wrap; /* Allow wrapping */
+}
+
+.about-us .text-content {
+    flex: 2;
     text-align: justify;
 }
 
-/* Motivation Section Specific */
-.motivation {
-    background-color: #FFFFFF;
+.about-us .image-content {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-width: 300px; /* Ensure image doesn't get too small */
 }
 
-/* Call to Action Section Specific */
-.call-to-action {
-    background: linear-gradient(135deg, #1B263B, #0D1B2A); /* Dark gradient */
-    color: #E0FBFC;
-    padding: 4em;
+.about-us .image-content img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 15px; /* More rounded image */
+    box-shadow: var(--shadow-medium); /* Nicer shadow for image */
+    border: 3px solid var(--color-navy-medium); /* Subtle border matching theme */
+    transition: transform 0.3s ease-out;
+}
+.about-us .image-content img:hover {
+    transform: scale(1.02); /* Slight scale on image hover */
+}
+
+/* --- Vision Section (Parallax) Specific --- */
+.vision {
+    background: linear-gradient(rgba(10,20,40,0.85), rgba(10,20,40,0.85)), url('https://via.placeholder.com/1800x900?text=Visi+Kami'); /* Darker overlay */
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed; /* Parallax effect */
+    color: var(--color-text-white);
+    padding: 7em 4em; /* More vertical padding */
+    text-shadow: 2px 2px 8px rgba(0,0,0,0.6); /* Stronger text shadow */
+    border-radius: 0; /* No border radius for full width parallax effect */
+    margin-left: calc(-1 * var(--spacing-lg)); /* Extend to edges of main content padding */
+    margin-right: calc(-1 * var(--spacing-lg));
+    clip-path: polygon(0 5%, 100% 0%, 100% 95%, 0% 100%); /* Subtle wave/angle effect */
+    margin-bottom: var(--spacing-xl); /* Maintain spacing */
+}
+.vision h2 {
+    color: var(--color-text-white);
+    font-size: 3.5em;
+    text-shadow: 2px 2px 8px rgba(0,0,0,0.6);
+}
+.vision h2::after {
+    background: linear-gradient(to right, var(--color-accent-gold), var(--color-accent-blue-bright)); /* Accent gradient underline */
+}
+.vision p {
+    color: var(--color-text-light);
+    max-width: 950px;
+    margin: var(--spacing-md) auto;
+    font-size: 1.3em;
     text-align: center;
+}
+
+/* --- Features Section Specific --- */
+.features {
+    background-color: var(--color-bg-light-card);
+}
+
+.features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: var(--spacing-lg);
+    margin-top: var(--spacing-lg);
+}
+
+.feature-item {
+    background-color: var(--color-bg-main); /* Slightly lighter background for feature items */
+    padding: var(--spacing-lg);
+    border-radius: 15px;
+    box-shadow: var(--shadow-subtle);
+    text-align: center;
+    transition: transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.4s cubic-bezier(0.2, 0.8, 0.2, 1), background-color 0.3s ease;
+    border: 1px solid var(--color-navy-light);
+    overflow: hidden; /* For inner shadow */
+    position: relative;
+}
+
+.feature-item:hover {
+    transform: translateY(-12px) scale(1.03); /* More pronounced lift and scale */
+    box-shadow: var(--shadow-medium);
+    background-color: var(--color-white); /* White background on hover for highlight */
+    border-color: var(--color-accent-gold); /* Gold border on hover */
+}
+
+.feature-item .icon {
+    font-size: 3.5em; /* Larger icons */
+    margin-bottom: 0.8em;
+    color: var(--color-accent-blue-bright); /* Bright blue for icons */
+    transition: color 0.3s ease;
+}
+.feature-item:hover .icon {
+    color: var(--color-accent-gold); /* Gold icon on hover */
+}
+
+.feature-item h3 {
+    font-size: 2em; /* Larger feature heading */
+    margin-bottom: 0.7em;
+    font-weight: 800;
+    color: var(--color-navy-dark);
+}
+
+.feature-item p {
+    font-size: 1.05em;
+    line-height: 1.7;
+    text-align: center;
+    color: var(--color-text-dark);
+}
+
+/* --- Motivation Section Specific --- */
+.motivation {
+    background-color: var(--color-bg-light-card);
+}
+
+/* --- Call to Action Section Specific --- */
+.call-to-action {
+    background: linear-gradient(135deg, var(--color-navy-dark), var(--color-navy-darkest));
+    color: var(--color-text-white);
+    padding: var(--spacing-xl) var(--spacing-lg);
+    border-radius: 20px;
+    box-shadow: var(--shadow-elevated);
 }
 
 .call-to-action h2 {
-    color: #E0FBFC;
-    font-size: 2.8em;
+    color: var(--color-text-white);
+    font-size: 3.5em;
+    text-shadow: 2px 2px 6px rgba(0,0,0,0.3);
+}
+.call-to-action h2::after {
+    background: linear-gradient(to right, var(--color-accent-gold), var(--color-accent-blue-bright));
 }
 
 .call-to-action p {
-    color: #A9D1D5;
-    max-width: 700px;
-    margin: 1.5em auto 2em auto;
-    font-size: 1.15em;
+    color: var(--color-text-light);
+    max-width: 800px;
+    margin: var(--spacing-md) auto var(--spacing-lg) auto;
+    font-size: 1.25em;
+    text-align: center;
 }
 
-/* Call to Action Buttons */
+/* --- Call to Action Buttons --- */
 .cta-button, .cta-button-secondary {
     display: inline-block;
-    padding: 1.2em 3em;
+    padding: 1.4em 4em; /* Larger, more prominent buttons */
     text-decoration: none;
-    border-radius: 50px; /* Pill-shaped button */
+    border-radius: 50px;
     font-weight: 700;
-    font-size: 1.1em;
-    transition: all 0.3s ease;
+    font-size: 1.25em; /* Larger font */
+    transition: all 0.4s cubic-bezier(0.2, 0.8, 0.2, 1); /* Smoother, bouncier transition */
     text-transform: uppercase;
-    letter-spacing: 1px;
+    letter-spacing: 1.5px;
+    border: none;
+    cursor: pointer;
+    box-shadow: var(--shadow-medium);
 }
 
 .cta-button {
-    background-color: #3f51b5; /* Primary blue */
-    color: #ffffff;
-    box-shadow: 0 4px 15px rgba(63, 81, 181, 0.4);
+    background: linear-gradient(45deg, var(--color-accent-blue-bright), var(--color-navy-medium)); /* Gradient background */
+    color: var(--color-white);
 }
 
 .cta-button:hover {
-    background-color: #283593; /* Darker blue on hover */
-    transform: translateY(-3px); /* Lift effect */
-    box-shadow: 0 8px 20px rgba(63, 81, 181, 0.6);
+    background: linear-gradient(45deg, var(--color-navy-medium), var(--color-accent-blue-bright)); /* Reverse gradient on hover */
+    transform: translateY(-7px) scale(1.02); /* More lift and scale */
+    box-shadow: var(--shadow-elevated);
 }
 
 .cta-button-secondary {
-    background-color: #778DA9; /* Greyish blue */
-    color: #0D1B2A; /* Dark text on light button */
-    box-shadow: 0 4px 15px rgba(119, 141, 169, 0.4);
+    background: linear-gradient(45deg, var(--color-navy-light), var(--color-navy-medium)); /* Subtle gradient */
+    color: var(--color-text-dark);
 }
 
 .cta-button-secondary:hover {
-    background-color: #415A77; /* Medium blue on hover */
-    color: #FFFFFF; /* White text on hover */
-    transform: translateY(-3px); /* Lift effect */
-    box-shadow: 0 8px 20px rgba(119, 141, 169, 0.6);
+    background: linear-gradient(45deg, var(--color-navy-medium), var(--color-navy-light)); /* Subtle gradient reverse */
+    color: var(--color-text-white); /* White text on hover */
+    transform: translateY(-7px) scale(1.02);
+    box-shadow: var(--shadow-elevated);
 }
 
-
-/* Footer Styles */
+/* --- Footer Styles --- */
 footer {
-    background-color: #0D1B2A; /* Darker navy */
-    color: #A9D1D5;
+    background-color: var(--color-navy-darkest);
+    color: var(--color-text-light);
     text-align: center;
-    padding: 2em 1em;
+    padding: var(--spacing-lg) var(--spacing-sm);
     margin-top: auto;
-    box-shadow: 0 -4px 8px rgba(0,0,0,0.2);
+    box-shadow: var(--shadow-elevated);
     font-size: 0.95em;
+    border-top: 2px solid var(--color-navy-medium); /* Subtle top border */
 }
 
-footer p {
-    margin: 0.5em 0;
+/* --- Scroll To Top Button --- */
+#scrollToTopBtn {
+    display: none;
+    position: fixed;
+    bottom: var(--spacing-lg);
+    right: var(--spacing-lg);
+    z-index: 999; /* Even higher z-index */
+    border: none;
+    outline: none;
+    background: linear-gradient(45deg, var(--color-accent-gold), var(--color-accent-blue-bright)); /* Gradient button */
+    color: var(--color-navy-darkest); /* Dark text on bright button */
+    cursor: pointer;
+    padding: 18px 22px; /* Larger padding */
+    border-radius: 50%;
+    font-size: 1.8em; /* Larger icon */
+    box-shadow: var(--shadow-medium);
+    transition: background 0.3s ease, transform 0.3s ease, opacity 0.3s ease;
+    line-height: 1; /* For perfect vertical centering */
+    font-weight: 700;
+}
+
+#scrollToTopBtn:hover {
+    background: linear-gradient(45deg, var(--color-accent-blue-bright), var(--color-accent-gold)); /* Reverse gradient on hover */
+    transform: translateY(-5px) rotate(5deg); /* Lift and slight rotate */
+    box-shadow: var(--shadow-elevated);
 }
 
 /* --- Animation Styles --- */
-/* Initial state for elements that will animate */
+/* Base for elements that will animate */
 .animate-on-scroll {
     opacity: 0;
-    transform: translateY(50px);
-    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+    transition: opacity 0.8s cubic-bezier(0.2, 0.8, 0.2, 1), transform 0.8s cubic-bezier(0.2, 0.8, 0.2, 1);
 }
 
-/* State when element is visible and animated */
 .animate-on-scroll.is-visible {
     opacity: 1;
-    transform: translateY(0);
+    transform: translateY(0) translateX(0) scale(1);
 }
 
-/* Specific fade-in for header */
+/* Specific entrance animations */
+.slide-up {
+    transform: translateY(80px); /* Start further down */
+}
+
+.fade-in {
+    transform: translateY(0);
+    transition: opacity 1.2s ease-out; /* Slower fade */
+}
+
+.fade-in-left {
+    transform: translateX(-100px); /* Start further left */
+}
+
+.fade-in-right {
+    transform: translateX(100px); /* Start further right */
+}
+
+.scale-in {
+    transform: scale(0.8); /* Start smaller */
+}
+
+/* Header fade in on page load */
 .animate-fade-in {
     opacity: 0;
-    animation: fadeIn 1.5s ease-out forwards;
+    animation: fadeIn 1.8s cubic-bezier(0.2, 0.8, 0.2, 1) forwards; /* Slower, smoother fade for header */
 }
 
 @keyframes fadeIn {
@@ -266,75 +518,200 @@ footer p {
     to { opacity: 1; }
 }
 
-/* Media Queries for Responsiveness */
-@media (max-width: 768px) {
-    header h1 {
-        font-size: 2.2em;
+/* --- Media Queries for Responsiveness --- */
+@media (max-width: 1200px) {
+    main {
+        max-width: 95%;
+        padding: 0 var(--spacing-md);
     }
-
-    header p {
-        font-size: 1em;
-    }
-
-    .logo {
-        max-width: 120px;
-    }
-
-    .nav-links {
-        flex-direction: column;
-    }
-
-    .nav-links li {
-        margin: 0.5em 0;
-    }
-
     section {
-        padding: 2em;
-        margin-bottom: 2em;
+        padding: var(--spacing-xl) var(--spacing-lg);
     }
-
-    section h2 {
-        font-size: 1.8em;
+    .hero {
+        padding: 5em var(--spacing-lg);
     }
-
-    .hero h2 {
-        font-size: 2.2em;
-    }
-
-    .hero p {
-        font-size: 1em;
-    }
-
-    .call-to-action h2 {
-        font-size: 2em;
-    }
-
-    .cta-button, .cta-button-secondary {
-        padding: 0.8em 2em;
-        font-size: 1em;
+    .vision {
+        padding: 6em var(--spacing-lg);
     }
 }
 
-@media (max-width: 480px) {
-    header {
-        padding: 1.5em 0.5em;
-    }
+@media (max-width: 992px) {
     header h1 {
-        font-size: 1.8em;
+        font-size: 3.5em;
     }
     header p {
-        font-size: 0.9em;
+        font-size: 1.3em;
+    }
+    h2 {
+        font-size: 2.5em;
+    }
+    .hero h2 {
+        font-size: 3.2em;
+    }
+    .hero p {
+        font-size: 1.2em;
+    }
+    .about-us .content-wrapper {
+        flex-direction: column;
+        gap: var(--spacing-md);
+    }
+    .about-us .image-content {
+        order: -1;
+    }
+    .vision h2 {
+        font-size: 2.8em;
+    }
+    .vision p {
+        font-size: 1.1em;
+    }
+    .features-grid, .testimonials-grid {
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: var(--spacing-md);
+    }
+    .feature-item h3 {
+        font-size: 1.7em;
+    }
+    .call-to-action h2 {
+        font-size: 2.8em;
+    }
+    .call-to-action p {
+        font-size: 1.1em;
+    }
+    .cta-button, .cta-button-secondary {
+        padding: 1.2em 3em;
+        font-size: 1.1em;
+    }
+}
+
+@media (max-width: 768px) {
+    header {
+        padding: var(--spacing-lg) var(--spacing-sm);
+    }
+    header h1 {
+        font-size: 2.8em;
+        letter-spacing: 2px;
+    }
+    header p {
+        font-size: 1.1em;
     }
     .logo {
-        max-width: 100px;
+        max-width: 180px;
     }
-    main {
-        padding: 0 1em;
-    }
-    section {
-        padding: 1.5em;
+    #navbar {
+        padding: var(--spacing-xs) 0;
     }
     .nav-links {
-        padding: 0.5em 0;
+        flex-direction: column;
+        gap: var(--spacing-xs);
     }
+    .nav-links li {
+        margin: 0;
+    }
+    .nav-links a {
+        padding: 0.6em var(--spacing-sm);
+        font-size: 1em;
+    }
+    main {
+        padding: 0 var(--spacing-sm);
+        margin: var(--spacing-lg) auto;
+    }
+    section {
+        padding: var(--spacing-md);
+        margin-bottom: var(--spacing-md);
+        border-radius: 15px;
+    }
+    h2 {
+        font-size: 2em;
+        margin-bottom: 1em;
+    }
+    h2::after {
+        width: 60px;
+        height: 3px;
+    }
+    section p {
+        font-size: 0.95em;
+    }
+    .hero {
+        padding: 4em var(--spacing-md);
+    }
+    .hero h2 {
+        font-size: 2.5em;
+    }
+    .hero p {
+        font-size: 1.1em;
+    }
+    .vision {
+        padding: 4em var(--spacing-md);
+        clip-path: polygon(0 2%, 100% 0%, 100% 98%, 0% 100%); /* Slightly smaller clip on mobile */
+    }
+    .vision h2 {
+        font-size: 2.2em;
+    }
+    .vision p {
+        font-size: 1em;
+    }
+    .features-grid, .testimonials-grid {
+        grid-template-columns: 1fr;
+        gap: var(--spacing-md);
+    }
+    .feature-item, .testimonial-item {
+        padding: var(--spacing-md);
+    }
+    .feature-item h3 {
+        font-size: 1.4em;
+    }
+    .call-to-action {
+        padding: 3em var(--spacing-md);
+    }
+    .call-to-action h2 {
+        font-size: 2.2em;
+    }
+    .call-to-action p {
+        font-size: 1.05em;
+    }
+    .cta-button, .cta-button-secondary {
+        padding: 1em 2.5em;
+        font-size: 1em;
+    }
+    /* --- Scroll To Top Button --- */
+#scrollToTopBtn {
+    display: none;
+    position: fixed;
+    bottom: var(--spacing-lg);
+    right: var(--spacing-lg);
+    z-index: 999;
+    border: none;
+    outline: none;
+    background: linear-gradient(45deg, var(--color-accent-gold), var(--color-accent-teal));
+    color: var(--color-navy-darkest); /* Warna dasar untuk SVG */
+    cursor: pointer;
+    padding: 18px 22px;
+    border-radius: 50%;
+    /* font-size: 1.8em; <-- Hapus baris ini karena kita pakai SVG bukan teks */
+    box-shadow: var(--shadow-medium);
+    transition: background 0.3s ease, transform 0.3s ease, opacity 0.3s ease;
+    line-height: 1;
+    font-weight: 700;
+    /* Tambahan untuk tata letak ikon SVG */
+    display: flex; /* Menggunakan flexbox untuk memposisikan ikon */
+    justify-content: center;
+    align-items: center;
+}
+
+#scrollToTopBtn svg { /* Gaya untuk ikon SVG di dalam tombol */
+    width: 28px; /* Ukuran SVG */
+    height: 28px;
+    stroke: var(--color-navy-darkest); /* Warna garis SVG */
+    transition: stroke 0.3s ease;
+}
+
+#scrollToTopBtn:hover {
+    background: linear-gradient(45deg, var(--color-accent-teal), var(--color-accent-gold));
+    transform: translateY(-5px) rotate(5deg) scale(1.05);
+    box-shadow: var(--shadow-elevated);
+}
+
+#scrollToTopBtn:hover svg { /* Warna SVG saat tombol di-hover */
+    stroke: var(--color-white); /* Atau warna lain yang kontras dan menarik */
+}
 }
